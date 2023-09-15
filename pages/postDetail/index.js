@@ -4,16 +4,17 @@ const template = document.createElement("template");
 template.innerHTML = `
 <style>
 </style>
-<div class="post-detail>
+<div class="post-detail">
     <h2>Title:</h2>
     <h4></h4>
     </br>
     <p></p>
     <h2>Comments</h2>
-    <div class="comments-container>
+    <div class="comments-container">
     </div>
 </div>
 `;
+
 
 class PostDetails extends HTMLElement {
   constructor() {

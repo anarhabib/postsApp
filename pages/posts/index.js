@@ -20,7 +20,6 @@ template.innerHTML = `
     cursor:pointer;
     border-radius:5px;
     transition:.3s;
-
 }
 #createNew:hover {
     background-color: #33b864;
@@ -38,7 +37,8 @@ template.innerHTML = `
 <hr>   
 <div class="card-container"></div> 
 </div>
-`
+`;
+
 
 class PostsPage extends HTMLElement{
     constructor(){

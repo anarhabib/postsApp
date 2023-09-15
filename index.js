@@ -1,12 +1,9 @@
 import './styles/main.css'
-import Router from "./route";
-import PostsPage from "./pages/posts";
-import PostDetails from "./pages/postDetail";
+import PostsPage from './pages/posts/index.js'
+import PostDetails from './pages/postDetail/index.js';
+import Router from './route'
 
-const routes = [
-  { path: "/", page: PostsPage },
-  { path: "/post-details", page: PostDetails },
-];
+Router.init();
 
-const router = new Router(routes);
-router.init();
+window.customElements.define("posts-page" , PostsPage);
+window.customElements.define("post-details" , PostDetails);
