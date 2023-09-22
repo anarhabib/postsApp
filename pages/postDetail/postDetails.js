@@ -8,7 +8,7 @@ template.innerHTML = `
   justify-content:space-between;
   align-items:center;
 }
-#createNew{
+#createNew ,#allPosts{
   padding:10px 20px;
   border:none;
   cursor:pointer;
@@ -17,6 +17,10 @@ template.innerHTML = `
 }
 #createNew:hover {
   background-color: #33b864;
+}
+
+#allPosts:hover {
+  background-color: yellow;
 }
 .post-detail {
   width: 70%;
@@ -50,6 +54,7 @@ p {
         <h2>Posts</h2>
     </div>
     <div class="create">
+    <button id="allPosts">All Posts</button>
         <button id="createNew">Create</button>
     </div>
 </header>
@@ -72,9 +77,24 @@ export default class PostDetails extends HTMLElement {
     this.commentContainer = this.shadowRoot.querySelector(
       ".comments-container"
     );
+    this.createBtn = this.shadowRoot.querySelector("#createNew");
+    this.allPostBtn = this.shadowRoot.querySelector("#allPosts");
+
     const { id, title } = this.getIdFromQueryString();
     this.shadowRoot.querySelector("h4").textContent = title.toUpperCase();
     this.fetchComments(id);
+
+    this.createBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      history.pushState(null, null, "/create");
+      window.dispatchEvent(new Event("popstate"));
+    });
+
+    this.allPostBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      history.pushState(null, null, "/");
+      window.dispatchEvent(new Event("popstate"));
+    });
   }
   getIdFromQueryString() {
     const queryParams = new URLSearchParams(window.location.search);

@@ -44,8 +44,14 @@ export default class PostsPage extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
     this.cardContainer = this.shadowRoot.querySelector(".card-container");
+    this.createBtn = this.shadowRoot.querySelector("#createNew");
 
     this.fetchData();
+    this.createBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      history.pushState(null, null, "/create");
+      window.dispatchEvent(new Event("popstate"));
+    });
   }
 
   async fetchData() {

@@ -99,5 +99,10 @@ export default class CreatePost extends HTMLElement {
         console.log(err);
       }
     });
+
+    this.cancelBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      window.history.back();
+    });
   }
 }

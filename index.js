@@ -1,7 +1,6 @@
 import PostsPage from "./pages/posts/posts";
 import PostDetails from "./pages/postDetail/postDetails";
 import CreatePost from "./pages/newPost/createPost";
-import { route } from "./route";
 
 window.customElements.define("posts-page", PostsPage);
 window.customElements.define("post-details", PostDetails);
@@ -20,8 +19,6 @@ const routes = {
 
 function renderComponent(routePath) {
   const Component = routes[routePath];
-  console.log(Component);
-
   if (Component) {
     appContainer.innerHTML = "";
     const componentInstance = new Component();
